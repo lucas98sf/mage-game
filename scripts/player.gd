@@ -30,13 +30,12 @@ func _physics_process(delta):
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 
-	if direction < 0:
-		animated_sprite.flip_h = true
-	elif direction > 0:
-		animated_sprite.flip_h = false
-
-	if velocity.x != 0:
+	if direction != 0:
 		animated_sprite.play("run")
+		if direction > 0:
+			animated_sprite.flip_h = false
+		else:
+			animated_sprite.flip_h = true
 	else:
 		animated_sprite.play("idle")
 
